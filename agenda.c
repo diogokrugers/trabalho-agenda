@@ -117,7 +117,7 @@ int main() {
         if(pBuffer[1] == NULL){
                 printf("Não tem memória o suficiente!\n");
                 exit(0);
-            }
+        }
     strcpy(pBuffer[1], "4");  //só 3 elementos até agora
 
     pBuffer[2] = (char*) malloc(sizeof(char) * 5);          // QUANTIDADE TEMPORÁRIA DE ELEMENTOS

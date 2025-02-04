@@ -109,8 +109,11 @@ for(*i = (sizeof(int) * 5) + (sizeof(char) * TAM_MAX * 2); *i < (int)((sizeof(in
             nome += (sizeof(char) * (strlen(nome) + 1)); // PASSA PRO PRÓXIMO NOME
         } //numTempChars COMEÇA A TER O TAMANHO A SER TIRADO
 
+        printf("%s foi a última pessoa a ser adicionada? (Digite 1 caso sim, qualquer outro número caso não): ", tempNome);
+        scanf("%d", op);
+        getchar();
+        if( *op == 1 ){
             stringTemp2 = tempNome; //stringTemp2 vira o nome, para calcular o tamanho a ser movido
-
             //    op = ints iniciais        chars iniciais                 tempNome                           |  op < ints iniciais             chars iniciais                  quantidade de chars total |    op pula pra proxima string
             for( *op = (sizeof(int) * 5 ) + (sizeof(char) * TAM_MAX * 2) + (sizeof(char) * *tamanhoStringTemp); *op < (int)((sizeof(int) * 5) + (sizeof(char) * TAM_MAX * 2) + (sizeof(char) * *numChars)); (*op) = *op + *tamanhoStringTemp){
                 *tamanhoStringTemp += strlen(stringTemp2) + 1; //tamanhoStrinTemp2 se soma com o tamanho da string que ele está
@@ -118,9 +121,8 @@ for(*i = (sizeof(int) * 5) + (sizeof(char) * TAM_MAX * 2); *i < (int)((sizeof(in
             } 
             *tamanhoStringTemp = *tamanhoStringTemp - *numTempChars;
             // tamanhoStringTemp COMEÇA A TER O TAMANHO A SER MOVIDO
-
             memmove(tempNome, nome, sizeof(char) * *tamanhoStringTemp);
-
+        }
         //                        pBuffer   ints iniciais    +  chars iniciais              + numChars - numTempChars               
         *buffer = (void*) realloc(*buffer, (sizeof(int) * 5) + (sizeof(char) * TAM_MAX * 2) + ((sizeof(char) * *numChars) - (sizeof(char) * *numTempChars)));
 
